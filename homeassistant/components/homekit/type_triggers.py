@@ -56,7 +56,7 @@ class DeviceTriggerAccessory(HomeAccessory):
                 trigger_name_parts.append(state.name)
             trigger_name_parts.append(type_.replace("_", " ").title())
             if subtype:
-                trigger_name_parts.append(subtype.replace("_", " ").title())
+                trigger_name_parts.append(str(subtype).replace("_", " ").title())
             trigger_name = cleanup_name_for_homekit(" ".join(trigger_name_parts))
             serv_stateless_switch = self.add_preload_service(
                 SERV_STATELESS_PROGRAMMABLE_SWITCH,

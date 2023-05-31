@@ -38,6 +38,10 @@ async def test_programmable_switch_button_fires_on_trigger(
     device_triggers = await async_get_device_automations(
         hass, DeviceAutomationType.TRIGGER, device_id
     )
+
+    for trigger in device_triggers:  # numeric subtypes simulate Philips Hue buttons
+        trigger["subtype"] = 1
+
     acc = DeviceTriggerAccessory(
         hass,
         hk_driver,
